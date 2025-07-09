@@ -9,13 +9,13 @@ import { Button } from '../components/ui/button';
 import { ArrowUpDown, FileCheck, MoveRight } from 'lucide-react';
 
 const MergePage: React.FC = () => {
-  const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
-  const [isProcessing, setIsProcessing] = useState<boolean>(false);
-  const [processedFileUrl, setProcessedFileUrl] = useState<string | undefined>(undefined);
-  const [processedBlob, setProcessedBlob] = useState<Blob | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [processedFileName, setProcessedFileName] = useState<string | undefined>(undefined);
-  const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const [uploadedFiles, setUploadedFiles] = useState([] as File[]);
+  const [isProcessing, setIsProcessing] = useState(false as boolean);
+  const [processedFileUrl, setProcessedFileUrl] = useState(undefined as string | undefined);
+  const [processedBlob, setProcessedBlob] = useState(null as Blob | null);
+  const [error, setError] = useState(null as string | null);
+  const [processedFileName, setProcessedFileName] = useState(undefined as string | undefined);
+  const [uploadProgress, setUploadProgress] = useState(0 as number);
 
   const handleFilesDrop = (files: File[]): void => {
     if (files.length === 0) return;
@@ -31,11 +31,11 @@ const MergePage: React.FC = () => {
     }
 
     // Add files to the existing list without duplicates
-    setUploadedFiles(prevFiles => {
+    setUploadedFiles((prevFiles: File[]) => {
       const newFiles = [...prevFiles];
       pdfFiles.forEach(file => {
         // Check if file already exists in the array by comparing name and size
-        const exists = prevFiles.some(f => f.name === file.name && f.size === file.size);
+        const exists = prevFiles.some((f: File) => f.name === file.name && f.size === file.size);
         if (!exists) {
           newFiles.push(file);
         }
@@ -51,8 +51,8 @@ const MergePage: React.FC = () => {
   };
 
   const handleRemoveFile = (file: File): void => {
-    setUploadedFiles(prevFiles =>
-      prevFiles.filter(f => !(f.name === file.name && f.size === file.size))
+    setUploadedFiles((prevFiles: File[]) =>
+      prevFiles.filter((f: File) => !(f.name === file.name && f.size === file.size))
     );
   };
 

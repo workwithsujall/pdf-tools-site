@@ -14,12 +14,12 @@ const Home = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [processedFileUrl, setProcessedFileUrl] = useState(undefined as string | undefined);
   const [processedBlob, setProcessedBlob] = useState(null as Blob | null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState(null as string | null);
   const [compressionLevel, setCompressionLevel] = useState(2); // Medium compression by default
-  const [processedFileName, setProcessedFileName] = useState<string | undefined>(undefined);
+  const [processedFileName, setProcessedFileName] = useState(undefined as string | undefined);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [originalSize, setOriginalSize] = useState<number | undefined>(undefined);
-  const [compressedSize, setCompressedSize] = useState<number | undefined>(undefined);
+  const [originalSize, setOriginalSize] = useState(undefined as number | undefined);
+  const [compressedSize, setCompressedSize] = useState(undefined as number | undefined);
 
   const handleFilesDrop = (files: File[]) => {
     if (files.length > 0) {

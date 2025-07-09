@@ -49,7 +49,7 @@ cd ..
 
 Run both frontend and backend with the provided script:
 ```bash
-./run.sh
+./setup.sh
 ```
 
 Or run them separately:
@@ -74,18 +74,29 @@ The application will be available at:
 
 ## Deployment
 
-### Frontend (Next.js)
+### Frontend (Next.js) on Vercel
 
-Deploy to Vercel:
+#### Option 1: Deploy directly from GitHub
+
+1. Connect your GitHub repository to Vercel
+2. Set the following environment variables in the Vercel dashboard:
+   - `NEXT_PUBLIC_API_URL`: URL of your deployed backend API
+
+#### Option 2: Deploy using Vercel CLI
+
+1. Install Vercel CLI:
 ```bash
 npm install -g vercel
+```
+
+2. Deploy to Vercel:
+```bash
 vercel
 ```
 
-Or build for production:
+3. For production deployment:
 ```bash
-npm run build
-npm run start
+vercel --prod
 ```
 
 ### Backend (FastAPI)
@@ -98,7 +109,14 @@ docker build -t pdf-tools-api .
 docker run -p 8000:8000 pdf-tools-api
 ```
 
-#### Option 2: Traditional Deployment
+#### Option 2: Deploy to a serverless platform
+
+You can deploy the FastAPI backend to platforms like:
+- [Deta](https://www.deta.sh/)
+- [AWS Lambda](https://aws.amazon.com/lambda/) with [Mangum](https://github.com/jordaneremieff/mangum)
+- [Google Cloud Run](https://cloud.google.com/run)
+
+#### Option 3: Traditional Deployment
 
 Install Gunicorn:
 ```bash

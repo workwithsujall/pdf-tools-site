@@ -9,15 +9,15 @@ import { Button } from '../components/ui/button';
 import { Layers, Scissors, FileCheck } from 'lucide-react';
 
 const SplitPage: React.FC = () => {
-    const [uploadedFile, setUploadedFile] = useState<File | null>(null);
-    const [isProcessing, setIsProcessing] = useState<boolean>(false);
-    const [processedFileUrl, setProcessedFileUrl] = useState<string | undefined>(undefined);
-    const [processedBlob, setProcessedBlob] = useState<Blob | null>(null);
-    const [error, setError] = useState<string | null>(null);
-    const [processedFileName, setProcessedFileName] = useState<string | undefined>(undefined);
-    const [uploadProgress, setUploadProgress] = useState<number>(0);
-    const [splitMode, setSplitMode] = useState<'all' | 'range'>('all');
-    const [pageRange, setPageRange] = useState<string>('');
+    const [uploadedFile, setUploadedFile] = useState(null as File | null);
+    const [isProcessing, setIsProcessing] = useState(false as boolean);
+    const [processedFileUrl, setProcessedFileUrl] = useState(undefined as string | undefined);
+    const [processedBlob, setProcessedBlob] = useState(null as Blob | null);
+    const [error, setError] = useState(null as string | null);
+    const [processedFileName, setProcessedFileName] = useState(undefined as string | undefined);
+    const [uploadProgress, setUploadProgress] = useState(0 as number);
+    const [splitMode, setSplitMode] = useState('all' as 'all' | 'range');
+    const [pageRange, setPageRange] = useState('' as string);
 
     const handleFilesDrop = (files: File[]): void => {
         if (files.length === 0) return;
@@ -83,7 +83,7 @@ const SplitPage: React.FC = () => {
         }
     };
 
-    const handlePageRangeChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handlePageRangeChange = (e: any): void => {
         setPageRange(e.target.value);
     };
 
