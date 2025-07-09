@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import cn from "@/lib/utils"
 
 // Define strongly typed interfaces
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -42,8 +42,8 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
     );
   }
 )
-// Set display name using type assertion
-;(Card as any).displayName = "Card"
+  // Set display name using type assertion
+  ; (Card as any).displayName = "Card"
 
 const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
   (props, ref) => {
@@ -57,7 +57,7 @@ const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
     );
   }
 )
-;(CardHeader as any).displayName = "CardHeader"
+  ; (CardHeader as any).displayName = "CardHeader"
 
 const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
   (props, ref) => {
@@ -74,7 +74,7 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
     );
   }
 )
-;(CardTitle as any).displayName = "CardTitle"
+  ; (CardTitle as any).displayName = "CardTitle"
 
 const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
   (props, ref) => {
@@ -88,7 +88,7 @@ const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionPr
     );
   }
 )
-;(CardDescription as any).displayName = "CardDescription"
+  ; (CardDescription as any).displayName = "CardDescription"
 
 const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
   (props, ref) => {
@@ -98,7 +98,7 @@ const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
     );
   }
 )
-;(CardContent as any).displayName = "CardContent"
+  ; (CardContent as any).displayName = "CardContent"
 
 const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
   (props, ref) => {
@@ -112,6 +112,6 @@ const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
     );
   }
 )
-;(CardFooter as any).displayName = "CardFooter"
+  ; (CardFooter as any).displayName = "CardFooter"
 
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } 
