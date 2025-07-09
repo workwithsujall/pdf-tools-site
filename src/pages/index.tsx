@@ -13,7 +13,7 @@ const Home = () => {
   const [selectedTool, setSelectedTool] = useState('compress'); // Default to compress
   const [isProcessing, setIsProcessing] = useState(false);
   const [processedFileUrl, setProcessedFileUrl] = useState(undefined as string | undefined);
-  const [processedBlob, setProcessedBlob] = useState<Blob | null>(null);
+  const [processedBlob, setProcessedBlob] = useState(null as Blob | null);
   const [error, setError] = useState<string | null>(null);
   const [compressionLevel, setCompressionLevel] = useState(2); // Medium compression by default
   const [processedFileName, setProcessedFileName] = useState<string | undefined>(undefined);
