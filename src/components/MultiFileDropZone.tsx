@@ -12,9 +12,9 @@ interface MultiFileDropZoneProps {
   onRemoveFile: (file: File) => void;
 }
 
-const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({ 
-  onFilesDrop, 
-  isUploading = false, 
+const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
+  onFilesDrop,
+  isUploading = false,
   maxFiles = 10,
   files,
   onRemoveFile
@@ -29,10 +29,10 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
 
   const onDrop = useCallback((acceptedFiles: File[]) => {
     // Only allow PDF files
-    const pdfFiles = acceptedFiles.filter(file => 
+    const pdfFiles = acceptedFiles.filter(file =>
       file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')
     );
-    
+
     // Only take up to the remaining capacity
     const filesToAdd = pdfFiles.slice(0, remainingCapacity);
     if (filesToAdd.length > 0) {
@@ -91,8 +91,8 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div 
-          {...getRootProps()} 
+        <div
+          {...getRootProps()}
           className={`
             w-full max-w-3xl mx-auto border-2 border-dashed rounded-xl 
             py-8 px-6 sm:px-8 transition-all duration-200 ease-in-out
@@ -101,36 +101,36 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
           aria-label="Drop zone for PDF files"
         >
           <input {...getInputProps()} />
-          <motion.div 
+          <motion.div
             className="flex flex-col items-center justify-center space-y-3"
             animate={isDragActive && !isUploading ? { scale: 1.05 } : { scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
           >
-            <motion.div 
+            <motion.div
               className={`
                 rounded-full p-4
                 ${isUploading ? 'bg-gray-100' : 'bg-primary/10'}
               `}
-              animate={isDragActive && !isUploading ? 
+              animate={isDragActive && !isUploading ?
                 { y: [0, -10, 0], rotate: [0, -5, 5, 0] } : {}
               }
-              transition={{ 
-                duration: 1, 
+              transition={{
+                duration: 1,
                 repeat: isDragActive && !isUploading ? Infinity : 0,
-                repeatType: "loop" 
+                repeatType: "loop"
               }}
             >
               {isUploading ? (
                 <motion.div
                   animate={{ rotate: 360 }}
-                  transition={{ 
+                  transition={{
                     duration: 2,
                     repeat: Infinity,
                     ease: "linear"
                   }}
                 >
-                  <FileIcon 
-                    className="h-8 w-8 text-primary/60" 
+                  <FileIcon
+                    className="h-8 w-8 text-primary/60"
                   />
                 </motion.div>
               ) : (
@@ -152,13 +152,13 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
                   {isDragActive ? 'Drop your PDF files here' : 'Drop PDF files here'}
                 </h3>
               )}
-              
+
               {remainingCapacity > 0 && (
                 <p className="text-gray-500 text-sm mt-1">
                   {isDragActive ? 'Release to upload' : 'or click to browse files'}
                 </p>
               )}
-              
+
               <p className="text-sm font-medium mt-2">
                 {files.length > 0 ? (
                   <span className={remainingCapacity <= 0 ? 'text-amber-600' : 'text-primary'}>
@@ -174,7 +174,7 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
       </motion.div>
 
       {files.length > 0 && (
-        <motion.div 
+        <motion.div
           className="bg-white rounded-xl p-4 max-w-3xl mx-auto shadow-sm border"
           variants={containerVariants}
           initial="hidden"
@@ -183,7 +183,7 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
           <h4 className="font-medium text-gray-700 mb-3">Files to merge ({files.length})</h4>
           <div className="space-y-2">
             {files.map((file, index) => (
-              <motion.div 
+              <motion.div
                 key={`${file.name}-${file.size}-${index}`}
                 className="flex items-center justify-between rounded-lg border border-gray-100 bg-gray-50 p-3"
                 variants={itemVariants}
@@ -201,11 +201,11 @@ const MultiFileDropZone: React.FC<MultiFileDropZoneProps> = ({
                     </p>
                   </div>
                 </div>
-                
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  onClick={(e) => {
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={(e: any) => {
                     e.stopPropagation();
                     onRemoveFile(file);
                   }}
