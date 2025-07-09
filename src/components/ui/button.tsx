@@ -4,10 +4,6 @@ import { cva } from "class-variance-authority"
 
 import cn from "@/lib/utils"
 
-type VariantProps<T> = {
-  [K in keyof T]?: string;
-};
-
 const buttonVariants = cva(
   "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
@@ -45,21 +41,26 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  (props, ref) => {
-    const { className = '', variant, size, asChild = false, ...otherProps } = props;
-    const Comp = asChild ? Slot : "button"
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...otherProps}
-      />
-    )
-  }
-)
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+  const { className = "", variant, size, asChild = false, ...otherProps } = props;
+  const Comp = asChild ? Slot : "button"
+  
+  // Apply buttonVariants without using cn function
+  const variantClass = buttonVariants({ 
+    variant, 
+    size, 
+    className 
+  });
+  
+  return (
+    <Comp
+      className={variantClass}
+      ref={ref}
+      {...otherProps}
+    />
+  )
+})
 
-  // Set display name using type assertion to avoid TypeScript error
-  ; (Button as any).displayName = "Button"
+Button.displayName = "Button"
 
 export { Button, buttonVariants } 
