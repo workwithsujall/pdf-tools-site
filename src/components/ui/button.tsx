@@ -2,7 +2,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva } from "class-variance-authority"
 
-import { cn } from "@/lib/utils"
+import cn from "@/lib/utils"
 
 type VariantProps<T> = {
   [K in keyof T]?: string;
@@ -59,7 +59,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   }
 )
 
-// Set display name using type assertion to avoid TypeScript error
-;(Button as any).displayName = "Button"
+  // Set display name using type assertion to avoid TypeScript error
+  ; (Button as any).displayName = "Button"
 
 export { Button, buttonVariants } 
