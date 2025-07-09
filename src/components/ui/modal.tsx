@@ -2,7 +2,7 @@ import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X, Check, AlertCircle } from "lucide-react"
 import { Button } from "./button"
-import { cn } from "@/lib/utils"
+import cn from "@/lib/utils"
 
 interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;

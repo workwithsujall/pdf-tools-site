@@ -1,6 +1,6 @@
 import * as React from "react"
 import { motion } from "framer-motion"
-import { cn } from "@/lib/utils"
+import cn from "@/lib/utils"
 
 interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;
@@ -12,15 +12,15 @@ interface ProgressProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   (props, ref) => {
-    const { 
-      value = 0, 
-      max = 100, 
-      className, 
+    const {
+      value = 0,
+      max = 100,
+      className,
       indicatorClassName,
       showValue = false,
       ...otherProps
     } = props;
-    
+
     const percentage = Math.min(Math.max(value, 0), max) / max * 100;
 
     return (
@@ -57,6 +57,6 @@ const Progress = React.forwardRef<HTMLDivElement, ProgressProps>(
   }
 )
 
-;(Progress as any).displayName = "Progress"
+  ; (Progress as any).displayName = "Progress"
 
 export { Progress } 
