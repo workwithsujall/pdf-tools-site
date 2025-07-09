@@ -27,91 +27,102 @@ interface CardFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
 }
 
-const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "rounded-lg border bg-card text-card-foreground shadow-sm",
-          className
-        )}
-        {...otherProps}
-      />
-    );
-  }
-)
-  // Set display name using type assertion
-  ; (Card as any).displayName = "Card"
+// Define Card as a regular function component
+const CardComponent = (props: CardProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <div
+      ref={ref}
+      className={cn(
+        "rounded-lg border bg-card text-card-foreground shadow-sm",
+        className
+      )}
+      {...otherProps}
+    />
+  );
+};
 
-const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <div
-        ref={ref}
-        className={cn("flex flex-col space-y-1.5 p-6", className)}
-        {...otherProps}
-      />
-    );
-  }
-)
-  ; (CardHeader as any).displayName = "CardHeader"
+// Wrap with forwardRef and type assertion
+const Card = React.forwardRef(CardComponent as any) as any;
+Card.displayName = "Card";
 
-const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <h3
-        ref={ref}
-        className={cn(
-          "text-2xl font-semibold leading-none tracking-tight",
-          className
-        )}
-        {...otherProps}
-      />
-    );
-  }
-)
-  ; (CardTitle as any).displayName = "CardTitle"
+// Define CardHeader as a regular function component
+const CardHeaderComponent = (props: CardHeaderProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <div
+      ref={ref}
+      className={cn("flex flex-col space-y-1.5 p-6", className)}
+      {...otherProps}
+    />
+  );
+};
 
-const CardDescription = React.forwardRef<HTMLParagraphElement, CardDescriptionProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <p
-        ref={ref}
-        className={cn("text-sm text-muted-foreground", className)}
-        {...otherProps}
-      />
-    );
-  }
-)
-  ; (CardDescription as any).displayName = "CardDescription"
+// Wrap with forwardRef and type assertion
+const CardHeader = React.forwardRef(CardHeaderComponent as any) as any;
+CardHeader.displayName = "CardHeader";
 
-const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <div ref={ref} className={cn("p-6 pt-0", className)} {...otherProps} />
-    );
-  }
-)
-  ; (CardContent as any).displayName = "CardContent"
+// Define CardTitle as a regular function component
+const CardTitleComponent = (props: CardTitleProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <h3
+      ref={ref}
+      className={cn(
+        "text-2xl font-semibold leading-none tracking-tight",
+        className
+      )}
+      {...otherProps}
+    />
+  );
+};
 
-const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>(
-  (props, ref) => {
-    const { className, ...otherProps } = props;
-    return (
-      <div
-        ref={ref}
-        className={cn("flex items-center p-6 pt-0", className)}
-        {...otherProps}
-      />
-    );
-  }
-)
-  ; (CardFooter as any).displayName = "CardFooter"
+// Wrap with forwardRef and type assertion
+const CardTitle = React.forwardRef(CardTitleComponent as any) as any;
+CardTitle.displayName = "CardTitle";
+
+// Define CardDescription as a regular function component
+const CardDescriptionComponent = (props: CardDescriptionProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <p
+      ref={ref}
+      className={cn("text-sm text-muted-foreground", className)}
+      {...otherProps}
+    />
+  );
+};
+
+// Wrap with forwardRef and type assertion
+const CardDescription = React.forwardRef(CardDescriptionComponent as any) as any;
+CardDescription.displayName = "CardDescription";
+
+// Define CardContent as a regular function component
+const CardContentComponent = (props: CardContentProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <div ref={ref} className={cn("p-6 pt-0", className)} {...otherProps} />
+  );
+};
+
+// Wrap with forwardRef and type assertion
+const CardContent = React.forwardRef(CardContentComponent as any) as any;
+CardContent.displayName = "CardContent";
+
+// Define CardFooter as a regular function component
+const CardFooterComponent = (props: CardFooterProps, ref: any) => {
+  const { className, ...otherProps } = props;
+  return (
+    <div
+      ref={ref}
+      className={cn("flex items-center p-6 pt-0", className)}
+      {...otherProps}
+    />
+  );
+};
+
+// Wrap with forwardRef and type assertion
+const CardFooter = React.forwardRef(CardFooterComponent as any) as any;
+CardFooter.displayName = "CardFooter";
 
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } 
