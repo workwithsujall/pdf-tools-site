@@ -41,17 +41,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+// Use a simple approach with type assertions
+const Button = (props: ButtonProps, ref: any) => {
   const { className = "", variant, size, asChild = false, ...otherProps } = props;
   const Comp = asChild ? Slot : "button"
-  
+
   // Apply buttonVariants without using cn function
-  const variantClass = buttonVariants({ 
-    variant, 
-    size, 
-    className 
+  const variantClass = buttonVariants({
+    variant,
+    size,
+    className
   });
-  
+
   return (
     <Comp
       className={variantClass}
@@ -59,8 +60,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => 
       {...otherProps}
     />
   )
-})
+};
 
-Button.displayName = "Button"
+// Apply forwardRef with type assertion
+const ForwardButton = React.forwardRef(Button as any) as any;
 
-export { Button, buttonVariants } 
+ForwardButton.displayName = "Button";
+
+export { ForwardButton as Button, buttonVariants } 
