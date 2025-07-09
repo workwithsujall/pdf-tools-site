@@ -36,8 +36,9 @@ const FilePreview = ({
 }: FilePreviewProps) => {
   const [internalProgress, setInternalProgress] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState<'success' | 'error'>('success');
-  const [localErrorMessage, setLocalErrorMessage] = useState<string>('');
+  // Fix TypeScript error by using type assertion instead of generic type parameters
+  const [modalType, setModalType] = useState('success' as 'success' | 'error');
+  const [localErrorMessage, setLocalErrorMessage] = useState('' as string);
 
   // Handle error from parent component
   useEffect(() => {
